@@ -6,9 +6,11 @@ import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.project.kotlintext.entity.User
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +25,33 @@ class MainActivity : AppCompatActivity() {
             setTextColor(ContextCompat.getColor(applicationContext,R.color.colorAccent))
 
         }
+        val list = arrayListOf(1,2,3,4,5);
+        val doubleList = list.map {
+            it *2
+        }
+        val oddList = list.filter {
+            it%2 == 1
+        }
+        doubleList.forEach {
+            print(it)
+        }
+        oddList.forEach {
+            print(it)
+        }
+        list.forEach {
+            println(it)
+        }
+
+        val javaClass = User("xx")
+        println(javaClass.name)
+        println(javaClass.email)
+        val anInt:Int ?=null
+        debug("shaomiao")
+
+    }
+    // 延迟加载机制
+    private val aTextView:TextView by lazy {
+        findViewById(R.id.text) as TextView
     }
 
     inline fun <reified TV : View> Context.v(init:TV.() -> Unit):TV {
@@ -30,5 +59,8 @@ class MainActivity : AppCompatActivity() {
         val view = constr.newInstance(this);
         view.init();
         return view;
+    }
+    inline fun <reified T> T.debug(log:Any) {
+        Log.d("shaomaio",log.toString())
     }
 }
