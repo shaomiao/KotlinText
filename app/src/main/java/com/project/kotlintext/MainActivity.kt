@@ -2,6 +2,7 @@ package com.project.kotlintext
 
 
 import android.app.ActionBar
+import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -14,6 +15,10 @@ import android.widget.TextView
 import com.project.kotlintext.entity.User
 import com.project.kotlintext.kotlin.Main2Activity
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
+import android.widget.TimePicker
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,8 +27,23 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         name_tv.text="邵淼";
         name_tv.setOnClickListener {
-
+            //获取一个日历对象
+            val dateAndTime = Calendar.getInstance(Locale.CHINA)
+            val t = TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
+                //同DatePickerDialog控件
+                dateAndTime.set(Calendar.HOUR_OF_DAY, hourOfDay)
+                dateAndTime.set(Calendar.MINUTE, minute)
+//                upDateTime()
+            }
+            //获取一个日历对象
+            val timeDlg = TimePickerDialog(this,
+                    t,
+                    dateAndTime.get(Calendar.HOUR_OF_DAY),
+                    dateAndTime.get(Calendar.MINUTE),
+                    true);
+            timeDlg.show();
         }
+
         v<TextView> {
             layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
             text = "Hello"
