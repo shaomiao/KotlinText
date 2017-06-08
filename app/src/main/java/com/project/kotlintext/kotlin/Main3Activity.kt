@@ -6,6 +6,7 @@ import com.project.kotlintext.R
 
 /**
  * 最新测试类
+ * 这个是最新的
  */
 
 class Main3Activity : AppCompatActivity() {
@@ -162,7 +163,24 @@ class Main3Activity : AppCompatActivity() {
                 else -> "Unknown"
             }
     // 使用ranges
+    // 检查数值是否在某个范围内
     fun mainRanges(args:Array<String>) {
+        val x = 10
+        val y = 9
+        if (x in 1..y+1) {
+            println("fits in range")
+        }
+    }
+
+    fun describe1 (obj:Any) :String =
+            when (obj) {
+                1 -> "One"
+                is Long -> "Long"
+                !is String -> "Not a string"
+                else -> "Unknown"
+            }
+
+    fun mainRanges1() {
         val x = 10
         val y = 9
         if (x in 1..y+1) {
