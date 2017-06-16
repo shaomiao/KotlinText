@@ -52,12 +52,71 @@ class Main4Activity : AppCompatActivity() {
         }
     }
 
+    // try-catch表达式
+    fun test() {
+        val result = try {
+//            count()
+        }catch (e:ArithmeticException) {
+            throw IllegalStateException(e)
+        }
+        // 处理result
+    }
+
+    // if表达式
+    fun foo(param:Int):String {
+        val result = if (param == 1) {
+            "one"
+        } else if (param == 2) {
+            "two"
+        } else {
+            "three"
+        }
+        return result
+    }
+
+    // 方法使用生成器模式返回Unit
+    // -1 0 1 2
+    fun arrOfMinusOnes(size:Int):IntArray {
+        return kotlin.IntArray(size).apply { fill(-1) }
+    }
+
+    fun theAnswer() =42
+
+    // 与下面的语句是等效的
+    fun theAnswer1() :Int{
+        return 42
+    }
+
+    fun transform1(color:String):Int = when(color) {
+        "Red" -> 0
+        "Green" -> 1
+        "Bule" -> 2
+        else -> throw IllegalArgumentException("Invalid color param value")
+    }
+    // 利用with调用一个对象实例的多个方法
+//    class Turtle {
+//        fun penDown()
+//        fun penUp()
+//        fun turn(degrees:Double)
+//        fun forward(pixels:Double)
+//    }
+//    val myTurtle = Turtle()
+//    with(myTurtle) { // 画一个100像素的正方形
+//        penDown()
+//        for(i in 1..4) {
+//            forward
+//        }
+//
+//    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_main4)
 
-        println(transform("Green"))
+        println(theAnswer())
+
+//        println(transform("Green"))
 
         // 如果不为空执行某操作
 //        val data = ""
