@@ -20,10 +20,12 @@
         <activity android:name=".kotlin.Main2Activity" />
         <activity android:name=".kotlin.Main3Activity"></activity>
         <activity android:name=".kotlin.Main4Activity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        </activity>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+        <activity android:name=".kotlin.Main5Activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
     </application>
